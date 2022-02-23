@@ -1,0 +1,32 @@
+name: my complex github action workflow
+
+on: push
+
+jobs:
+  job1:
+    name: first-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: print date in job1
+        run: date
+  job2:
+    name: second-job
+    runs-on: windows-latest
+    steps:
+      - name: print date in job2
+        run: Get-Date
+
+  job3:
+    name: third-job
+    runs-on: macos-latest
+    steps:
+      - name: print date in job 3
+        run: date
+
+  job4:
+    name: fourth-job
+    needs: [job1, job2, job3]
+    runs-on: windows-latest
+    steps:
+      - name: print date in job 4
+        run: Get-Date
